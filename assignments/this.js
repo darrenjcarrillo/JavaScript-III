@@ -25,25 +25,40 @@ person();
 // Principle 2
 
 // code example for Implicit Binding
-
-
-function secondPerson(){
-  name: 'Lary',
+let stranger = {
+  name: "Lary",
   age: 25,
-  location: 'Los Angeles',
-  greet: 'Hello',
-  speak: function(){
-    console.log(this.greet)
+  location: "Los Angeles",
+  greet: "Hello",
+  speak: function() {
+    console.log(this.greet);
   }
-}
-secondPerson.speak();
+};
 
-
+stranger.speak(); // invoking the function here
 
 // Principle 3
 
 // code example for New Binding
 
+function person(friend) {
+  this.stranger = friend;
+}
+
+let myfriend = new person("He is my new friend");
+
+console.log(myfriend.stranger); //function is being invoke
+
 // Principle 4
 
 // code example for Explicit Binding
+
+function anotherPerson() {
+  console.log(this.greet);
+}
+
+let friend = {
+  greet: "How are you"
+};
+
+anotherPerson.call(friend); // invoking the function here
